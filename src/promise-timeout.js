@@ -25,21 +25,22 @@ class PromiseTimeoutError extends Error {
  */
 const promiseTimeout = async (promise, ms, errMsg = null) => {
   const _promise = typeof promise === 'function' ? promise() : promise
+  const timeoutErr = new PromiseTimeoutError(errMsg)
   let timeout = null
 
-  const res = await Promise.race([
-    _promise,
-    new Promise(resolve => {
-      timeout = setTimeout(() => {
-        resolve(new PromiseTimeoutError(errMsg))
-      }, ms)
-    })
-  ])
+  try {
+    const res = await Promise.race([
+      _promise,
+      new Promise((resolve, reject) => {
+        timeout = setTimeout(() => { reject(timeoutErr) }, ms)
+      })
+    ])
 
-  if (res instanceof PromiseTimeoutError) throw res
-
-  clearTimeout(timeout)
-  return res
+    return res
+  } catch (err) {
+    if (err !== timeoutErr) clearTimeout(timeout) // not timeout error
+    throw err
+  }
 }
 
 module.exports = {
