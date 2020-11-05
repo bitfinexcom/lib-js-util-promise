@@ -1,0 +1,45 @@
+{
+  "name": "@bitfinex/lib-js-util-promise",
+  "version": "0.0.1",
+  "description": "Bitfinex Lib Utility for Promises",
+  "main": "index.js",
+  "scripts": {
+    "docs": "jsdoc2md --no-cache --files  ./src/*.js ./src/**/*.js > docs/DEFINITIONS.md",
+    "format": "standard --fix",
+    "lint": "standard",
+    "test": "npm run lint && npm run unit",
+    "unit": "NODE_ENV=test mocha ./test/index.test.js"
+  },
+  "keywords": [
+    "promise",
+    "utils",
+    "timeout"
+  ],
+  "author": "vigan.abd",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitfinexcom/lib-js-util-promise.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bitfinexcom/lib-js-util-promise/issues"
+  },
+  "homepage": "https://github.com/bitfinexcom/lib-js-util-promise#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "dirty-chai": "^2.0.1",
+    "jsdoc-to-markdown": "^6.0.1",
+    "mocha": "^8.1.1",
+    "standard": "^14.3.4"
+  },
+  "standard": {
+    "globals": [
+      "it",
+      "describe",
+      "before",
+      "after",
+      "beforeEach",
+      "afterEach"
+    ]
+  }
+}
