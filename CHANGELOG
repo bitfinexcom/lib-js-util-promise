@@ -1,3 +1,6 @@
+# 0.0.2
+- feature: added typescript support
+
 # 0.0.1
 - feature: promise sleep util
 - feature: promise timeout util
