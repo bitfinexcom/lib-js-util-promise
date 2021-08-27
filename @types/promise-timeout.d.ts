@@ -1,4 +1,3 @@
-'use strict'
 /**
  * Run a promise with an execution timeout
  *
@@ -7,9 +6,11 @@
  * @param errMsg Custom error message for PromiseTimeoutError
  */
 export function promiseTimeout<TResult>(
-  promise: Promise<TResult> | (() => Promise<TResult>) | TResult,
+  promise: Promise<TResult> | (() => Promise<TResult>) | TResult | (() => TResult),
   ms: number,
   errMsg?: string
 ): Promise<TResult>
 
-export class PromiseTimeoutError extends Error { }
+export class PromiseTimeoutError extends Error {
+  constructor(message?: string)
+}

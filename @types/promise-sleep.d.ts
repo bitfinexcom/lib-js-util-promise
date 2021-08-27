@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * Wait until specific time before resolving the promise
  *
