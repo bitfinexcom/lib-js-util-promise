@@ -35,6 +35,7 @@ const promiseTimeout = async (promise, ms, errMsg = null) => {
         timeout = setTimeout(() => { reject(timeoutErr) }, ms)
       })
     ])
+    clearTimeout(timeout)
 
     return res
   } catch (err) {
