@@ -1,3 +1,7 @@
+# 1.0.0
+- chore: first stable release
+- feature: promise flat util
+
 # 0.0.2
 - feature: added typescript support
 
