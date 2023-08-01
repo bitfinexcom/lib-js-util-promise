@@ -8,7 +8,7 @@
     "format": "standard --fix",
     "lint": "standard",
     "test": "npm run lint && npm run unit",
-    "unit": "NODE_ENV=test mocha ./test/index.test.js"
+    "unit": "NODE_ENV=test mocha ./test"
   },
   "keywords": [
     "promise",
