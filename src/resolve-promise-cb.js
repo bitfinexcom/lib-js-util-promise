@@ -1,11 +1,11 @@
 /**
  * Calls the callback or resolves the Promise if no cb
  *
- * @param {Error} The error, if any
- * @param {any} The resolved value, if any
- * @param {function} The callback function, if not a promise
+ * @param {Error} err - The error, if any
+ * @param {any} res - The resolved value, if any
+ * @param {(err?: Error, res?: any) => void} cb - The callback function, if not a promise
  *
- * @returns { promise: Promise<any>, resolve: (val: any) => void, reject: (err: Error) => void }
+ * @returns {void|Promise<any>}
  */
 const resolvePromiseCb = (err, res, cb) => {
   const isCb = typeof cb === 'function'

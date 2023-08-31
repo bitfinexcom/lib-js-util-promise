@@ -1,1 +1,1 @@
-export function resolvePromiseCb(err: Error, res: any, cb: (err: Error, res: any) => void): Promise<void>;
+export function resolvePromiseCb<T>(err?: Error, res?: T, cb?: (err?: Error, res?: T) => void): void|Promise<T>
