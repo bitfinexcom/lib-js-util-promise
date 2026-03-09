@@ -1,8 +1,11 @@
 # lib-js-util-promise
 
 The lib includes the utilities depicted below:
+- promiseFlat - applies function to iterable and executes returned promises concurrently with optional limit
 - promiseSleep - promise version of setTimeout
 - promiseTimeout - wraps the promise/async function with a timeout so it doesn't run forever
+- resolvePromiseCb - calls the callback or resolves the Promise if no cb
+- waitForCondition - wait for sometime until an action resolves to a truthy result 
 
 ## Installing
 
