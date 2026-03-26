@@ -3,7 +3,7 @@
 /**
  * Returns promise and separated resolve, reject methods
  *
- * @returns { promise: Promise<any>, resolve: (val: any) => void, reject: (err: Error) => void }
+ * @returns {{ promise: Promise<any>, resolve: function(any): void, reject: function(Error): void }}
  */
 const promiseFlat = () => {
   let resolve, reject
