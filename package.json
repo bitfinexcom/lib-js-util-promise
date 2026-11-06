@@ -1,14 +1,16 @@
 {
   "name": "@bitfinex/lib-js-util-promise",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Bitfinex Lib Utility for Promises",
   "main": "index.js",
   "scripts": {
-    "docs": "jsdoc2md --no-cache --files  ./src/*.js ./src/**/*.js > docs/DEFINITIONS.md",
-    "format": "standard --fix",
-    "lint": "standard",
+    "lint": "bfx-lint-js",
+    "lint:fix": "bfx-lint-js --fix",
     "test": "npm run lint && npm run unit",
-    "unit": "NODE_ENV=test mocha ./test"
+    "unit": "brittle-node ./test/*.js"
+  },
+  "engines": {
+    "node": ">=22.0"
   },
   "keywords": [
     "promise",
@@ -26,21 +28,7 @@
   },
   "homepage": "https://github.com/bitfinexcom/lib-js-util-promise#readme",
   "devDependencies": {
-    "chai": "^4.3.7",
-    "chai-as-promised": "^7.1.1",
-    "dirty-chai": "^2.0.1",
-    "jsdoc-to-markdown": "^7.0.1",
-    "mocha": "^10.0.2",
-    "standard": "^17.0.0"
-  },
-  "standard": {
-    "globals": [
-      "it",
-      "describe",
-      "before",
-      "after",
-      "beforeEach",
-      "afterEach"
-    ]
+    "@bitfinex/lint-js": "^1.1.0",
+    "brittle": "^4.5.0"
   }
 }
