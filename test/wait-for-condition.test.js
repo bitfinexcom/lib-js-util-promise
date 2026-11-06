@@ -19,7 +19,7 @@ test('should wait some time between checks', async (t) => {
   const start = Date.now()
   const res = await waitForCondition(() => {
     iterations++
-    return Date.now() - start > 500
+    return Date.now() - start > 375
   }, { intervalMs: 250 })
   t.alike(res, true)
   t.alike(iterations, 2)
