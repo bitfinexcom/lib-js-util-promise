@@ -2,34 +2,31 @@
 
 /* eslint-env mocha */
 
-const chai = require('chai')
-  .use(require('dirty-chai'))
-  .use(require('chai-as-promised'))
-const { expect } = chai
+const test = require('brittle')
 const { resolvePromiseCb } = require('../')
 
-describe('resolvePromiseCb tests', () => {
-  it('should handle callback errors', (done) => {
-    resolvePromiseCb(new Error('foo'), null, (err) => {
-      expect(err.message).to.be.equal('foo')
-      done()
-    })
-  })
+test('should handle callback errors', (t) => {
+  t.plan(1)
 
-  it('should handle promise rejections', async () => {
-    await expect(resolvePromiseCb(new Error('foo'))).to.be.rejectedWith('foo')
+  resolvePromiseCb(new Error('foo'), null, (err) => {
+    t.is(err.message, 'foo')
   })
+})
 
-  it('should handle callback results', (done) => {
-    resolvePromiseCb(null, 'foo', (err, res) => {
-      expect(err).to.be.null()
-      expect(res).to.be.equal('foo')
-      done()
-    })
-  })
+test('should handle promise rejections', async (t) => {
+  await t.exception(resolvePromiseCb(new Error('foo')), /foo/)
+})
 
-  it('should handle promise resolves', async () => {
-    const res = await resolvePromiseCb(null, 'foo')
-    expect(res).to.be.equal('foo')
+test('should handle callback results', (t) => {
+  t.plan(2)
+
+  resolvePromiseCb(null, 'foo', (err, res) => {
+    t.is(err, null)
+    t.is(res, 'foo')
   })
+})
+
+test('should handle promise resolves', async (t) => {
+  const res = await resolvePromiseCb(null, 'foo')
+  t.is(res, 'foo')
 })
